@@ -17,8 +17,10 @@
         {% include "users/header.html" %}
     </div>
     <main>
-        {% block content %}
-        {% endblock content %}
+        <section class="content-container">
+            {% block content %}
+            {% endblock content %}
+        </section>
         <!-- side bar -->
         {% include "users/sidebar.html" %}
     </main>

@@ -88,3 +88,16 @@ header nav {
     width: 100px;
     height: 100px;
 }
+
+/* main content */
+.content-container {
+    flex: 1;
+    margin-right: calc(100vw - calc(100vw - var(--side-bar-width)));
+    margin-top: 70px;
+}
+
+#main-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
