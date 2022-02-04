@@ -1,0 +1,22 @@
+:root {
+    --bg-light: #14213d;
+    --bg-dark: #03071e;
+    --side-bar-width: 300px;
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: white;
+}
+
+* {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-light) !important;
+    color: white;
+}
