@@ -1,0 +1,19 @@
+{% block header %}
+    <header class="d-flex align-items-center justify-content-around py-3 w-100 fixed-top">
+        <h1 class="fs-4 mb-0">instagram</h1>
+        <nav class="d-flex align-items-center justify-content-between">
+            <div id="search-wrapper" class="d-flex align-items-center rounded px-2 py-1">
+                <input type="text" id="search-input" placeholder="search...">
+                <i class="fas fa-search" role="button"></i>
+            </div>
+            <div class="nav-links d-flex align-items-center justify-content-around w-100">
+                <i class="fas fa-home"></i>
+                <i class="far fa-compass"></i>
+                <i class="far fa-plus-square"></i>
+                <div class="avatar rounded">
+                    <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user profile">
+                </div>
+            </div>
+        </nav>
+    </header>
+{% endblock %}
