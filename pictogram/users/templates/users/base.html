@@ -16,5 +16,11 @@
     <div class="container-fluid">
         {% include "users/header.html" %}
     </div>
+    <main>
+        {% block content %}
+        {% endblock content %}
+        <!-- side bar -->
+        {% include "users/sidebar.html" %}
+    </main>
 </body>
 </html>
