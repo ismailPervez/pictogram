@@ -101,3 +101,30 @@ header nav {
     grid-template-columns: repeat(3, 1fr);
     gap: 12px;
 }
+
+/* register form */
+#form-container {
+    display: grid;
+    place-items: center;
+}
+
+#form-container form {
+    width: 65%;
+}
+
+.textinput.textInput.form-control {
+    background-color: transparent;
+    color: white;
+}
+
+.textarea.form-control {
+    background-color: transparent;
+    height: 150px;
+    resize: none;
+    color: white;
+}
+
+.emailinput.form-control {
+    background-color: transparent;
+    color: white;
+}
