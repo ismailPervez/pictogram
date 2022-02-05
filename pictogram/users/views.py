@@ -7,13 +7,15 @@ def home(request):
 
 def register(request):
     if request.method == "POST":
-        form = RegisterForm(request.POST)
+        form = RegisterForm(request.POST, request.FILES)
+        print(request.FILES)
         if form.is_valid():
+            picture = form.cleaned_data['profile_pic']
             print('form saved cool')
             form.save()
             print('saved form, check admin')
             messages.success(request, 'Registration suceessful. You can now login')
-            # redirect('')
+            redirect('login')
     else:
         form = RegisterForm()
 

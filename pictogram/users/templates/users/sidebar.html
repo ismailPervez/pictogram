@@ -1,25 +1,31 @@
 {% block sidebar %}
     <section id="side-bar" class="pt-3">
         <div class="user-details">
-            <div class="avatar rounded">
-                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user profile">
-            </div>
-            <p class="text-bold fs-4 my-2">ismailpervez</p>
-            <p>pervezismailnagi@gmail.com</p>
-            <div class="d-flex align-items-center justify-content-around w-100">
-                <div class="d-flex align-items-center flex-column">
-                    <p>20</p>
-                    <p>posts</p>
+            {% if user.is_authenticated %}
+                <div class="avatar rounded">
+                    <img src="{{ user.profile_pic.url }}" alt="{{ user }}'s profile">
                 </div>
-                <div class="d-flex align-items-center flex-column">
-                    <p>200K</p>
-                    <p>followers</p>
+                <p class="text-bold fs-4 my-2">{{ user }}</p>
+                <p>{{ user.email }}</p>
+                <div class="d-flex align-items-center justify-content-around w-100">
+                    <div class="d-flex align-items-center flex-column">
+                        <p>20</p>
+                        <p>posts</p>
+                    </div>
+                    <div class="d-flex align-items-center flex-column">
+                        <p>200K</p>
+                        <p>followers</p>
+                    </div>
+                    <div class="d-flex align-items-center flex-column">
+                        <p>4</p>
+                        <p>following</p>
+                    </div>
                 </div>
-                <div class="d-flex align-items-center flex-column">
-                    <p>4</p>
-                    <p>following</p>
-                </div>
-            </div>
+            {% else %}
+                <h3 class="text-center mb-3 fs-5">You are not logged in</h3>
+                <a href="{% url 'register' %}" class="btn btn-primary mb-2">register</a>
+                <a href="{% url 'login' %}" class="btn btn-outline-primary">login</a>
+            {% endif %}
         </div>
     </section>
 {% endblock %}

@@ -44,7 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'bootstrap5',
-    'crispy_forms'
+    'crispy_forms',
+    'cloudinary'
 ]
 
 MIDDLEWARE = [
@@ -144,3 +145,5 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_URL = 'login'
 
 LOGIN_REDIRECT_URL = 'home'
+
+LOGOUT_REDIRECT_URL = 'home'

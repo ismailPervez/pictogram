@@ -1,5 +1,6 @@
 from django.forms import ModelForm, CharField, PasswordInput
 from .models import User
+# from cloudinary.forms import CloudinaryFileField
 
 '''
 ERRORS:
@@ -10,7 +11,7 @@ class RegisterForm(ModelForm):
     confirm_password = CharField(widget=PasswordInput, label='confirm password')
     class Meta:
         model = User
-        fields = ['username', 'email', 'bio', 'password', 'confirm_password']
+        fields = ['username', 'email', 'bio', 'profile_pic', 'password', 'confirm_password']
         widgets = {
             'password': PasswordInput()
         }
