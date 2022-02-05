@@ -1,4 +1,5 @@
 {% extends "users/base.html" %}
+{% load customfilters %}
 {% block content %}
     <div>
         <h3 class="mb-2">latest posts</h3>
@@ -22,12 +23,11 @@
                         <div>
                             <p>{{ post.caption }}</p>
                             <div class="reactions">
-                                <span class="me-2">
+                                <span class="me-2 like">
                                     <i class="far fa-heart" data-id="{{ post.pk }}"></i>
-                                    1K
-                                    <!-- {{ post.get_likes() }} -->
+                                    {{ post|get_likes }}
                                 </span>
-                                <span>
+                                <span class="comment">
                                     <i class="far fa-comment-dots"></i>
                                     20
                                 </span>

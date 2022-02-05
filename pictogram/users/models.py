@@ -18,7 +18,8 @@ class Post(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def get_likes(self):
-        likes = Like.objects.filter(post=self, user=self.user)
+        likes = Like.objects.filter(post=self)
+        # print(self)
         return len(likes)
 
 # like
