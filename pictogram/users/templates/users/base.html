@@ -18,6 +18,11 @@
     </div>
     <main>
         <section class="content-container px-3">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
             {% block content %}
             {% endblock content %}
         </section>
