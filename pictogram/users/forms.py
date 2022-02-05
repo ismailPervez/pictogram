@@ -1,5 +1,5 @@
 from django.forms import ModelForm, CharField, PasswordInput
-from .models import User
+from .models import User, Post
 # from cloudinary.forms import CloudinaryFileField
 
 '''
@@ -25,3 +25,8 @@ class RegisterForm(ModelForm):
             self.add_error('confirm_password', 'passwords do not match')
 
         return cleaned_data
+
+class CreatePostForm(ModelForm):
+    class Meta:
+        model = Post
+        fields = ['picture', 'caption']
