@@ -21,6 +21,7 @@
                         <p>following</p>
                     </div>
                 </div>
+                <a href="{% url 'logout' %}" class="btn btn-outline-primary mt-3">log out</a>
             {% else %}
                 <h3 class="text-center mb-3 fs-5">You are not logged in</h3>
                 <a href="{% url 'register' %}" class="btn btn-primary mb-2">register</a>
