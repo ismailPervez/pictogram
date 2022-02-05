@@ -23,8 +23,9 @@
                             <p>{{ post.caption }}</p>
                             <div class="reactions">
                                 <span class="me-2">
-                                    <i class="far fa-heart"></i>
+                                    <i class="far fa-heart" data-id="{{ post.pk }}"></i>
                                     1K
+                                    <!-- {{ post.get_likes() }} -->
                                 </span>
                                 <span>
                                     <i class="far fa-comment-dots"></i>

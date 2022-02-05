@@ -16,3 +16,14 @@ class Post(models.Model):
     caption = models.CharField(max_length=150)
     date_posted = models.DateField(default=timezone.now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def get_likes(self):
+        likes = Like.objects.filter(post=self, user=self.user)
+        return len(likes)
+
+# like
+class Like(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    # user = models.OneToOneField(Post, models.CASCADE)
+    # post = models.ManyToManyField(Post, models.CASCADE, related_name='likes')

@@ -1,7 +1,7 @@
-from django.http import HttpResponse
+from django.http import JsonResponse, HttpResponse
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, CreatePostForm
-from .models import Post, User
+from .models import Post, User, Like
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -14,10 +14,7 @@ def register(request):
         form = RegisterForm(request.POST, request.FILES)
         print(request.FILES)
         if form.is_valid():
-            # picture = form.cleaned_data['profile_pic']
-            # print('form saved cool')
             form.save()
-            # print('saved form, check admin')
             messages.success(request, 'Registration suceessful. You can now login')
             redirect('login')
     else:
@@ -52,3 +49,19 @@ def user_profile(request, username):
     posts = Post.objects.filter(user=user).all()
 
     return render(request, 'users/profile.html', {'profile_user': user, 'posts': posts})
+
+@login_required
+def like_post(request, post_id):
+    post = Post.objects.get(pk=post_id)
+    if not post:
+        return JsonResponse({'msg': 'post liked', 'status_code': 200})
+    
+    like = Like.objects.filter(user=request.user, post=post)
+    if not like:
+        like = Like(user=request.user, post=post)
+        like.save()
+        return JsonResponse({'msg': 'liked', 'status_code': 200})
+
+    else:
+        like.delete()
+        return JsonResponse({'msg': 'unliked', 'status_code': 200})
