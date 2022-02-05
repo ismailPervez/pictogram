@@ -3,7 +3,11 @@
         <div class="user-details">
             {% if user.is_authenticated %}
                 <div class="avatar rounded">
-                    <img src="{{ user.profile_pic.url }}" alt="{{ user }}'s profile">
+                    {% if user.profile_pic.url %}
+                        <img src="{{ user.profile_pic.url }}" alt="user profile">
+                    {% else %}
+                        <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user profile">
+                    {% endif %}
                 </div>
                 <p class="text-bold fs-4 my-2">{{ user }}</p>
                 <p>{{ user.email }}</p>

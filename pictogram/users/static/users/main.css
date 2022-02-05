@@ -59,6 +59,7 @@ a {
 .avatar {
     width: 36px;
     height: 36px;
+    border-radius: 50% !important;
     background-color: var(--bg-light);
     position: relative;
 }
@@ -68,6 +69,7 @@ a {
     width: 100%;
     height: 100%;
     object-fit: contain;
+    border-radius: 50% !important;
 }
 
 /* side bar */
@@ -146,7 +148,7 @@ a {
     position: relative;
 }
 
-.img > img {
+.img img {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -170,10 +172,6 @@ a {
 }
 
 .caption {
-    /* display: grid;
-    grid-template-columns: 20% 80%;
-    gap: 5px;
-    place-items: center; */
     display: flex;
     align-items: center;
 }

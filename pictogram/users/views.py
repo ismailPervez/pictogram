@@ -1,6 +1,7 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import RegisterForm, CreatePostForm
-from .models import Post
+from .models import Post, User
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -42,3 +43,12 @@ def create_post(request):
         form = CreatePostForm()
 
     return render(request, 'users/post.html', {'form': form})
+
+def user_profile(request, username):
+    user = User.objects.get(username=username)
+    if not user:
+        return HttpResponse('user not found. 404 error')
+
+    posts = Post.objects.filter(user=user).all()
+
+    return render(request, 'users/profile.html', {'profile_user': user, 'posts': posts})
