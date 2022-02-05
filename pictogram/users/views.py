@@ -5,17 +5,18 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 def home(request):
-    return render(request, 'users/index.html')
+    posts = Post.objects.order_by('date_posted').all()
+    return render(request, 'users/index.html', {'posts': posts})
 
 def register(request):
     if request.method == "POST":
         form = RegisterForm(request.POST, request.FILES)
         print(request.FILES)
         if form.is_valid():
-            picture = form.cleaned_data['profile_pic']
-            print('form saved cool')
+            # picture = form.cleaned_data['profile_pic']
+            # print('form saved cool')
             form.save()
-            print('saved form, check admin')
+            # print('saved form, check admin')
             messages.success(request, 'Registration suceessful. You can now login')
             redirect('login')
     else:
