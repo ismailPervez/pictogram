@@ -25,7 +25,7 @@
                             <div class="reactions">
                                 <span class="me-2 like">
                                     <i class="far fa-heart" data-id="{{ post.pk }}"></i>
-                                    {{ post|get_likes }}
+                                    <span class="text">{{ post|get_likes }}</span>
                                 </span>
                                 <span class="comment">
                                     <i class="far fa-comment-dots"></i>

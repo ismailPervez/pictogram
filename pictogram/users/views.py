@@ -64,4 +64,4 @@ def like_post(request, post_id):
 
     else:
         like.delete()
-        return JsonResponse({'msg': 'unliked', 'status_code': 200})
+        return JsonResponse({'msg': 'unliked', 'status_code': 204})
