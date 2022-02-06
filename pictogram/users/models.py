@@ -9,6 +9,15 @@ class User(AbstractUser):
     bio = models.TextField(max_length=200)
     profile_pic = CloudinaryField('image')
 
+    def get_posts(self):
+        return Post.objects.filter(user=self).all()
+
+    def get_followers(self): # people who follow the user
+        return self.followers.all()
+
+    def get_following(self): # people who the user follow
+        return self.following.all()
+
 
 # Post
 class Post(models.Model):
@@ -45,3 +54,16 @@ class Comment(models.Model):
 class UserFollowing(models.Model):
     user = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
     following_user = models.ForeignKey(User, related_name='followers', on_delete=models.CASCADE)
+
+'''
+user2_following_user1 = UserFollowing(user=user2, following_user=user1)
+user1_following_user2.save()
+user2.followers.all()
+<QuerySet []>
+user2 = User.objects.get(username='dummy')
+user2.followers.all()
+<QuerySet []>
+user1 = User.objects.get(username='ismailpervez')
+user1.followers.all()
+<QuerySet [<UserFollowing: UserFollowing object (1)>]>
+'''
