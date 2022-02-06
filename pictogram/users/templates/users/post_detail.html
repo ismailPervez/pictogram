@@ -24,8 +24,9 @@
                 <small class="d-block">6th Aug 2022</small>
             </div>
         </div>
-        <form method="POST">
-            <input type="text">
+        <form method="POST" id="comment-form">
+            {{ form }}
+            <button class="comment-btn" role="button">send</button>
         </form>
     </div>
 {% endblock sidebar %}

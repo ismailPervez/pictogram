@@ -1,6 +1,6 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
-from .forms import RegisterForm, CreatePostForm
+from .forms import CommentForm, RegisterForm, CreatePostForm
 from .models import Post, User, Like
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -68,4 +68,5 @@ def like_post(request, post_id):
 
 def get_full_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
-    return render(request, 'users/post_detail.html', {'post': post})
+    form = CommentForm()
+    return render(request, 'users/post_detail.html', {'post': post, 'form': form})

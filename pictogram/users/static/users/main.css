@@ -178,10 +178,42 @@ a {
 
 div.comments {
     display: grid !important;
-    grid-template-rows: 5% 90% 5% !important;
+    grid-template-rows: 5% 88% 7% !important;
     height: 90%;
+}
+
+.comments-container {
+    height: 100%;
 }
 
 .comment {
     background-color: var(--bg-light);
+}
+
+#comment-form {
+    display: flex;
+    padding: 2% 2%;
+    align-items: center;
+}
+
+#comment-form input {
+    flex: 1;
+    border: none;
+    outline: none;
+    border-radius: 3px;
+    background-color: rgba(129, 128, 128, 0.466);
+    padding: 1% 2%;
+    color: white;
+}
+
+#comment-form input::placeholder {
+    color: white;
+}
+
+#comment-form button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: rgb(0, 129, 235);
+    font-weight: bold;
 }

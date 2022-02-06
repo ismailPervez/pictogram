@@ -1,5 +1,5 @@
-from django.forms import ModelForm, CharField, PasswordInput
-from .models import User, Post
+from django.forms import ModelForm, CharField, PasswordInput, TextInput
+from .models import User, Post, Comment
 # from cloudinary.forms import CloudinaryFileField
 
 '''
@@ -31,3 +31,14 @@ class CreatePostForm(ModelForm):
         model = Post
         fields = ['picture', 'caption']
 
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['content']
+        labels = {
+            'content': ''
+        }
+
+        widgets = {
+            'content': TextInput(attrs={'placeholder': 'post your comment...'})
+        }
