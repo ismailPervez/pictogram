@@ -45,7 +45,8 @@ window.onload = () => {
 
     searchBtn.onclick = (e) => {
         const searchValue = searchInput.value
-        window.location.replace(`posts/filtered/${searchValue}/`);
+        console.log(window.location.href)
+        window.location.href = window.location.origin + `/posts/filtered/${searchValue}/`
     }
     
 }

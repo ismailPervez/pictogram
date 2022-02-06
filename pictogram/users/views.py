@@ -100,8 +100,7 @@ def search_post(request, query):
     posts = Post.objects.all()
     filtered_posts = []
     for post in posts:
-        if query in post.caption.lower():
-            print(post.caption)
+        if query in post.caption.lower() or query in post.user.username:
             filtered_posts.append(post)
 
     return render(request, 'users/results.html', {'posts': filtered_posts})
