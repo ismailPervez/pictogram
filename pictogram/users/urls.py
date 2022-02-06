@@ -11,5 +11,6 @@ urlpatterns = [
     path('post/', views.create_post, name='post'),
     path('profile/<username>/', views.user_profile, name='profile'),
     path('like/post/<post_id>/', views.like_post, name='like-post'),
-    path('post/<post_id>/', views.get_full_post, name='full_post')
+    path('post/<post_id>/', views.get_full_post, name='full_post'),
+    path('delete/comment/<comment_id>/', views.delete_comment, name='delete_comment')
 ]

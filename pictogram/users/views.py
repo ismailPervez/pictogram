@@ -70,15 +70,25 @@ def get_full_post(request, post_id):
     post = get_object_or_404(Post, pk=post_id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
-        if form.is_valid():
-            new_comment = Comment(
-                content=form.cleaned_data['content'],
-                user=request.user,
-                post=post
-            )
-            new_comment.save()
+        if request.user.is_authenticated:
+            if form.is_valid():
+                new_comment = Comment(
+                    content=form.cleaned_data['content'],
+                    user=request.user,
+                    post=post
+                )
+                new_comment.save()
+
+        else:
+            messages.info(request, 'You need to be logged in to comment')
     
     else:
         form = CommentForm()
         
     return render(request, 'users/post_detail.html', {'post': post, 'form': form})
+
+# delete comment
+def delete_comment(request, comment_id):
+    comment = get_object_or_404(Comment, pk=comment_id)
+    comment.delete()
+    return JsonResponse({'msg': 'comment deleted', 'status_code': 200})

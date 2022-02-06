@@ -13,13 +13,21 @@
     <div class="comments d-flex flex-column align-items-center">
         <h3 class="text-center mb-2">comments</h3>
         <div class="comments-container w-100 px-2">
-            {% for comment in post|get_comments %}
-                <div class="comment px-3 py-2 rounded mb-2 w-100">
-                    <p class="mb-1">{{ comment.content }}</p>
-                    <small class="d-block">- {{ comment.user.username }}</small>
-                    <small class="d-block">{{ comment.date_posted }}</small>
-                </div>
-            {% endfor %}
+            {% if post|get_comments %}
+                {% for comment in post|get_comments %}
+                    <div class="comment px-3 py-2 rounded mb-2 w-100" data-id="{{ comment.pk }}">
+                        <p class="mb-1">{{ comment.content }}</p>
+                        <small class="d-block">- {{ comment.user.username }}</small>
+                        <small class="d-block">{{ comment.date_posted }}</small>
+                        <!-- delete icon -->
+                        {% if user.username == comment.user.username %}
+                            <i class="fas fa-trash-alt" role="button"></i>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <h4 class="text-center fs-5 mt-3 text-muted">Be the first to respond!</h4>
+            {% endif %}
         </div>
         <form method="POST" id="comment-form">
             {% csrf_token %}

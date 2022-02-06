@@ -184,16 +184,25 @@ div.comments {
 
 .comments-container {
     height: 100%;
+    overflow: scroll;
 }
 
 .comment {
     background-color: var(--bg-light);
+    position: relative;
+}
+
+.comment .fa-trash-alt {
+    position: absolute;
+    top: 8%;
+    right: 5%;
 }
 
 #comment-form {
     display: flex;
     padding: 2% 2%;
     align-items: center;
+    z-index: 5;
 }
 
 #comment-form input {

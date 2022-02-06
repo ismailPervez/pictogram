@@ -19,4 +19,23 @@ window.onload = () => {
                 })
         })
     })
+
+    // delete comment
+    const commentsContainer = document.querySelector('.comments-container')
+    deleteCommentBtns = document.querySelectorAll('.comment .fa-trash-alt')
+    deleteCommentBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            commentId = parseInt(e.target.parentElement.dataset.id)
+            
+            fetch('/delete/comment/' + commentId)
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status_code === 200) {
+                        // remove from DOM
+                        console.log(data.msg)
+                        commentsContainer.removeChild(e.target.parentElement) 
+                    }
+                })
+        })
+    })
 }
