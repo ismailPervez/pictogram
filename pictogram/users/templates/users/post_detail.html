@@ -11,7 +11,7 @@
             <div class="post-caption">
                 <p>{{ post.caption }}</p>
                 <small class="d-block">posted: {{ post.date_posted }}</small>
-                <small class="d-block">author: {{ post.user.username }}</small>
+                <small class="d-block"><a href="{% url 'profile' username=post.user.username %}" class="text-decoration-none">author: {{ post.user.username }}</a></small>
             </div>
         </section>
     </div>

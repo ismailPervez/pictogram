@@ -1,39 +1,42 @@
 {% extends "users/base.html" %}
+{% load customfilters %}
 {% block content %}
     <div>
         <h3 class="mb-2">all posts by {{ profile_user.username }}</h3>
         <hr>
         <section id="main-content" class="mt-2">
             {% for post in posts %}
-                <div class="card rounded">
-                    <div class="img">
-                        <img src="{{ post.picture.url }}" alt="{{ post.caption }}" class="rounded">
-                    </div>
-                    <div class="caption">
-                        <a href="{% url 'profile' username=post.user.username %}" class="d-block me-3">
-                            <div class="avatar">
-                                {% if post.user.profile_pic.url %}
-                                    <img src="{{ post.user.profile_pic.url }}" alt="user profile">
-                                {% else %}
-                                    <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user profile">
-                                {% endif %}
-                            </div>
-                        </a>
-                        <div>
+            <div class="card rounded">
+                <div class="img">
+                    <img src="{{ post.picture.url }}" alt="{{ post.caption }}" class="rounded">
+                </div>
+                <div class="caption">
+                    <a href="{% url 'profile' username=post.user.username %}" class="d-block me-3">
+                        <div class="avatar">
+                            {% if post.user.profile_pic.url %}
+                                <img src="{{ post.user.profile_pic.url }}" alt="user profile">
+                            {% else %}
+                                <img src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="user profile">
+                            {% endif %}
+                        </div>
+                    </a>
+                    <div>
+                        <a href="{% url 'full_post' post_id=post.pk %}" class="d-block text-decoration-none">
                             <p>{{ post.caption }}</p>
-                            <div class="reactions">
-                                <span class="me-2">
-                                    <i class="far fa-heart"></i>
-                                    1K
-                                </span>
-                                <span>
-                                    <i class="far fa-comment-dots"></i>
-                                    20
-                                </span>
-                            </div>
+                        </a>
+                        <div class="reactions">
+                            <span class="me-2 like">
+                                <i class="far fa-heart" data-id="{{ post.pk }}"></i>
+                                <span class="text">{{ post|get_likes }}</span>
+                            </span>
+                            <span class="comment">
+                                <i class="far fa-comment-dots"></i>
+                                <span class="text">{{ post|get_comment_count }}</span>
+                            </span>
                         </div>
                     </div>
                 </div>
+            </div>
             {% endfor %}
         </section>
     </div>

@@ -235,3 +235,7 @@ div.comments {
     width: 300px;
     height: 300px;
 }
+
+.reactions span {
+    background-color: transparent;
+}

@@ -79,6 +79,8 @@ def get_full_post(request, post_id):
                 )
                 new_comment.save()
 
+                form = CommentForm()
+
         else:
             messages.info(request, 'You need to be logged in to comment')
     
