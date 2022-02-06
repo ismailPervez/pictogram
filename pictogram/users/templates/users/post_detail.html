@@ -2,10 +2,17 @@
 {% load customfilters %}
 {% block content %}
     <div>
-        <h3 class="mb-2">latest posts</h3>
+        <h3 class="mb-2">Post Detail</h3>
         <hr>
         <section id="post" class="mt-2">
-            post content goes here
+            <div class="img">
+                <img src="{{ post.picture.url }}" alt="{{ post.caption }}">
+            </div>
+            <div class="post-caption">
+                <p>{{ post.caption }}</p>
+                <small class="d-block">posted: {{ post.date_posted }}</small>
+                <small class="d-block">author: {{ post.user.username }}</small>
+            </div>
         </section>
     </div>
 {% endblock content %}

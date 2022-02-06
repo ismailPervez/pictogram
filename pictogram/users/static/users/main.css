@@ -226,3 +226,12 @@ div.comments {
     color: rgb(0, 129, 235);
     font-weight: bold;
 }
+
+#post {
+    height: 300px;
+}
+
+#post .img {
+    width: 300px;
+    height: 300px;
+}
