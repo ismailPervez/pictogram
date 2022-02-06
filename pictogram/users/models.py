@@ -21,6 +21,10 @@ class Post(models.Model):
         likes = Like.objects.filter(post=self)
         return len(likes)
 
+    def get_comments(self):
+        comments = Comment.objects.filter(post=self)
+        return comments
+
 # like
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -31,3 +35,4 @@ class Comment(models.Model):
     content = models.CharField(max_length=150)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    date_posted = models.DateField(default=timezone.now)

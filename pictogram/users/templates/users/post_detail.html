@@ -13,20 +13,18 @@
     <div class="comments d-flex flex-column align-items-center">
         <h3 class="text-center mb-2">comments</h3>
         <div class="comments-container w-100 px-2">
-            <div class="comment px-3 py-2 rounded mb-2 w-100">
-                <p class="mb-1">this is a comment</p>
-                <small class="d-block">- ismailpervez</small>
-                <small class="d-block">6th Aug 2022</small>
-            </div>
-            <div class="comment px-3 py-2 rounded mb-2 w-100">
-                <p class="mb-1">this is a comment</p>
-                <small class="d-block">- ismailpervez</small>
-                <small class="d-block">6th Aug 2022</small>
-            </div>
+            {% for comment in post|get_comments %}
+                <div class="comment px-3 py-2 rounded mb-2 w-100">
+                    <p class="mb-1">{{ comment.content }}</p>
+                    <small class="d-block">- {{ comment.user.username }}</small>
+                    <small class="d-block">{{ comment.date_posted }}</small>
+                </div>
+            {% endfor %}
         </div>
         <form method="POST" id="comment-form">
+            {% csrf_token %}
             {{ form }}
-            <button class="comment-btn" role="button">send</button>
+            <button type="submit" class="comment-btn" role="button">send</button>
         </form>
     </div>
 {% endblock sidebar %}
