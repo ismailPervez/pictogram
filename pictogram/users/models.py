@@ -25,6 +25,10 @@ class Post(models.Model):
         comments = Comment.objects.filter(post=self)
         return comments
 
+    # NOTE: not working
+    # class Meta:
+    #     ordering = ['-date_posted']
+
 # like
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -36,3 +40,8 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     date_posted = models.DateField(default=timezone.now)
+
+# followers/following 
+class UserFollowing(models.Model):
+    user = models.ForeignKey(User, related_name='following', on_delete=models.CASCADE)
+    following_user = models.ForeignKey(User, related_name='followers', on_delete=models.CASCADE)
