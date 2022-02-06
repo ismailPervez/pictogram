@@ -1,6 +1,5 @@
 from django.forms import ModelForm, CharField, PasswordInput, TextInput
 from .models import User, Post, Comment
-# from cloudinary.forms import CloudinaryFileField
 
 '''
 ERRORS:

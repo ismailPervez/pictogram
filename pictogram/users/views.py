@@ -94,3 +94,16 @@ def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, pk=comment_id)
     comment.delete()
     return JsonResponse({'msg': 'comment deleted', 'status_code': 200})
+
+# search functionality
+def search_post(request, query):
+    posts = Post.objects.all()
+    filtered_posts = []
+    for post in posts:
+        if query in post.caption.lower():
+            print(post.caption)
+            filtered_posts.append(post)
+
+    return render(request, 'users/results.html', {'posts': filtered_posts})
+
+

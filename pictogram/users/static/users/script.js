@@ -38,4 +38,14 @@ window.onload = () => {
                 })
         })
     })
+
+    // search posts
+    const searchInput = document.querySelector('#search-input')
+    const searchBtn = document.querySelector('.fa-search')
+
+    searchBtn.onclick = (e) => {
+        const searchValue = searchInput.value
+        window.location.replace(`posts/filtered/${searchValue}/`);
+    }
+    
 }
