@@ -175,3 +175,13 @@ a {
     display: flex;
     align-items: center;
 }
+
+div.comments {
+    display: grid !important;
+    grid-template-rows: 5% 90% 5% !important;
+    height: 90%;
+}
+
+.comment {
+    background-color: var(--bg-light);
+}

@@ -30,3 +30,4 @@ class CreatePostForm(ModelForm):
     class Meta:
         model = Post
         fields = ['picture', 'caption']
+

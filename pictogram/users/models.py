@@ -19,12 +19,15 @@ class Post(models.Model):
 
     def get_likes(self):
         likes = Like.objects.filter(post=self)
-        # print(self)
         return len(likes)
 
 # like
 class Like(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    # user = models.OneToOneField(Post, models.CASCADE)
-    # post = models.ManyToManyField(Post, models.CASCADE, related_name='likes')
+
+# Comment
+class Comment(models.Model):
+    content = models.CharField(max_length=150)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)

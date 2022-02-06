@@ -1,5 +1,5 @@
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .forms import RegisterForm, CreatePostForm
 from .models import Post, User, Like
 from django.contrib import messages
@@ -65,3 +65,7 @@ def like_post(request, post_id):
     else:
         like.delete()
         return JsonResponse({'msg': 'unliked', 'status_code': 204})
+
+def get_full_post(request, post_id):
+    post = get_object_or_404(Post, pk=post_id)
+    return render(request, 'users/post_detail.html', {'post': post})

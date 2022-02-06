@@ -21,7 +21,9 @@
                             </div>
                         </a>
                         <div>
-                            <p>{{ post.caption }}</p>
+                            <a href="{% url 'full_post' post_id=post.pk %}" class="d-block text-decoration-none">
+                                <p>{{ post.caption }}</p>
+                            </a>
                             <div class="reactions">
                                 <span class="me-2 like">
                                     <i class="far fa-heart" data-id="{{ post.pk }}"></i>
