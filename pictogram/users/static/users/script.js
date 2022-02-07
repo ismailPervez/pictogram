@@ -49,4 +49,21 @@ window.onload = () => {
         window.location.href = window.location.origin + `/posts/filtered/${searchValue}/`
     }
     
+    // toggle side bar functionality
+    const toggleBtn = document.querySelector('.fa-bars')
+
+    if (toggleBtn) {
+        toggleBtn.onclick = () => {
+            const sidebar = document.querySelector('#side-bar')
+            if (sidebar.style.visibility == 'hidden') {
+                sidebar.style.visibility = 'visible'
+                sidebar.style.opacity = '1'
+            }
+
+            else {
+                sidebar.style.visibility = 'hidden'
+                sidebar.style.opacity = '0'
+            }
+        }
+    }
 }

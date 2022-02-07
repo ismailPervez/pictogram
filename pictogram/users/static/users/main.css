@@ -72,6 +72,10 @@ a {
     border-radius: 50% !important;
 }
 
+.fa-bars {
+    visibility: hidden;
+}
+
 /* side bar */
 #side-bar {
     width: var(--side-bar-width);
@@ -81,6 +85,7 @@ a {
     right: 0;
     background-color: var(--bg-dark);
     margin-top: 60px;
+    transition: 0.7s;
 }
 
 .user-details {
@@ -238,4 +243,73 @@ div.comments {
 
 .reactions span {
     background-color: transparent;
+}
+
+/* responsiveness starts here */
+@media screen and (max-width: 1075px) {
+    header nav {
+        width: 35%;
+    }
+}
+
+@media screen and (max-width: 1025px) {
+    header nav {
+        width: 38%;
+    }
+
+    #main-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+}
+
+@media screen and (max-width: 907px) {
+    header nav {
+        width: 45%;
+    }
+
+    #main-content {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .fa-bars {
+        visibility: visible;
+    }
+
+    #side-bar {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    .content-container {
+        margin-right: 3%;
+    }
+}
+
+@media screen and (max-width: 823px) {
+    header nav {
+        width: 55%;
+    }
+}
+
+@media screen and (max-width: 673px) {
+    .nav-links a .fa-home,
+    .nav-links .fa-compass,
+    .nav-links a .fa-plus-square {
+        visibility: hidden;
+        display: none;
+    }
+
+    /* header nav {
+        width: 50%;
+        display: flex;
+        justify-content: center;
+    } */
+}
+
+@media screen and (max-width: 527px) {
+    
 }
