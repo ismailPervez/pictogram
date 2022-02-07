@@ -4,6 +4,7 @@ from .forms import CommentForm, RegisterForm, CreatePostForm
 from .models import Post, User, Like, Comment
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.hashers import make_password
 
 def home(request):
     posts = Post.objects.order_by('date_posted').all()
@@ -14,7 +15,14 @@ def register(request):
         form = RegisterForm(request.POST, request.FILES)
         print(request.FILES)
         if form.is_valid():
-            form.save()
+            # form.save()
+            new_user = User(
+                username=form.cleaned_data['username'],
+                email=form.cleaned_data['email'],
+                profile_pic=form.cleaned_data['profile_pic'],
+                password=make_password(form.cleaned_data['password'])
+            )
+            new_user.save()
             messages.success(request, 'Registration suceessful. You can now login')
             redirect('login')
     else:
