@@ -105,6 +105,10 @@ a {
     display: none;
 }
 
+.side-bar-search > #search-wrapper {
+    display: none !important;
+}
+
 /* main content */
 .content-container {
     flex: 1;
@@ -339,6 +343,11 @@ div.comments {
 
     #form-container form {
         width: 100%;
+    }
+
+    .side-bar-search > #search-wrapper {
+        display: flex !important;
+        margin-bottom: 4%;
     }
 
 }

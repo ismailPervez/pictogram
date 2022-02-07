@@ -43,6 +43,12 @@
 {% endblock content %}
 {% block sidebar %}
     <div class="user-details">
+        <div class="side-bar-search">
+            <div id="search-wrapper" class="d-flex align-items-center rounded px-2 py-1">
+                <input type="text" id="search-input" placeholder="search...">
+                <i class="fas fa-search" role="button"></i>
+            </div>
+        </div>
         <div class="side-bar-nav">
             <a href="{% url 'home' %}"><i class="fas fa-home"></i></a>
             <i class="far fa-compass"></i>

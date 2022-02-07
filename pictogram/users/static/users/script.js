@@ -42,8 +42,10 @@ window.onload = () => {
     // search posts
     const searchInput = document.querySelector('#search-input')
     const searchBtn = document.querySelector('.fa-search')
-
+    console.log(searchInput)
+    console.log(searchBtn)
     searchBtn.onclick = (e) => {
+        console.log('click')
         const searchValue = searchInput.value
         console.log(window.location.href)
         window.location.href = window.location.origin + `/posts/filtered/${searchValue}/`
