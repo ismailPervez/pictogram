@@ -43,6 +43,11 @@
 {% endblock content %}
 {% block sidebar %}
     <div class="user-details">
+        <div class="side-bar-nav">
+            <a href="{% url 'home' %}"><i class="fas fa-home"></i></a>
+            <i class="far fa-compass"></i>
+            <a href="{% url 'post' %}" class="text-decoration-none"><i class="far fa-plus-square"></i></a>
+        </div>
         {% if user.is_authenticated %}
             <div class="avatar rounded">
                 {% if user.profile_pic.url %}
