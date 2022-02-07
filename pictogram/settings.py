@@ -157,7 +157,7 @@ LOGOUT_REDIRECT_URL = 'home'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = 'uhauisheuirio13y740987w98d789u02093u45089yf23489uq9we8u108234y0we'
 
 # prod
 DEBUG = True
