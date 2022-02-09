@@ -1,10 +1,11 @@
 from django.http import JsonResponse, HttpResponse
 from django.shortcuts import get_object_or_404, render, redirect
 from .forms import CommentForm, RegisterForm, CreatePostForm
-from .models import Post, User, Like, Comment
+from .models import Post, User, Like, Comment, UserFollowing
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.hashers import make_password
+from django.urls import reverse
 
 def home(request):
     posts = Post.objects.order_by('date_posted').all()
@@ -55,6 +56,7 @@ def user_profile(request, username):
         return HttpResponse('user not found. 404 error')
 
     posts = Post.objects.filter(user=user).all()
+    print(user.is_followed(request.user.pk))
 
     return render(request, 'users/profile.html', {'profile_user': user, 'posts': posts})
 
@@ -113,4 +115,21 @@ def search_post(request, query):
 
     return render(request, 'users/results.html', {'posts': filtered_posts})
 
+# follow a user
+def follow_user(request, username):
+    current_user = request.user
+    followed_user = get_object_or_404(User, username=username)
+    if followed_user.is_followed(current_user=current_user):
+        # already exits as a follower of username
+        # remove/unfollow
+        print(followed_user.is_followed(current_user=current_user))
+        UserFollowing.objects.filter(user=current_user, following_user=followed_user).delete()
 
+        return redirect(reverse('profile', kwargs={'username': username}))
+
+    else:
+        print(followed_user.is_followed(current_user=current_user))
+        new_follower = UserFollowing(user=current_user, following_user=followed_user)
+        new_follower.save()
+        
+        return redirect(reverse('profile', kwargs={'username': username}))

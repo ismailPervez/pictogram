@@ -71,5 +71,10 @@
                 <p>following</p>
             </div>
         </div>
+        {% if profile_user|is_followed:user  %}
+            <a href="{% url 'follow' username=profile_user.username %}" class="btn btn-outline-primary d-block">unfollow</a>
+        {% else %}
+            <a href="{% url 'follow' username=profile_user.username %}" class="btn btn-outline-primary d-block">follow</a>
+        {% endif %}
     </div>
 {% endblock sidebar %}

@@ -18,6 +18,12 @@ class User(AbstractUser):
     def get_following(self): # people who the user follow
         return self.following.all()
 
+    def is_followed(self, current_user=None):
+        follower = UserFollowing.objects.filter(user=current_user, following_user=self)
+        if follower:
+            return True
+        else:
+            return False
 
 # Post
 class Post(models.Model):
